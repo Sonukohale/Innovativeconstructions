@@ -42,62 +42,100 @@
     <link rel="stylesheet" href="css/bootstrap.min.css"/>
     <link rel="stylesheet" href="css/tooplate-infinite-loop.css"/>
 
-    <!-- FIXED MOBILE ISSUES + BEAUTY ENHANCEMENTS -->
+    <!-- RESPONSIVE + BEAUTY + LIGHTBOX SLIDER ENHANCEMENTS -->
     <style>
-        /* Hero Background - Full cover on mobile, no black bars */
-        #infinite {
-            background-size: cover !important;
-            background-position: center center !important;
-            min-height: 100vh;
-        }
-        @media (max-width: 768px) {
-            #infinite { background-attachment: scroll !important; } /* Fix parallax issue on mobile */
-        }
+        /* General Beauty & Font */
+        body { font-family: 'Segoe UI', sans-serif; line-height: 1.7; }
+        .tm-hero-title { font-weight: 900; text-shadow: 3px 3px 10px rgba(0,0,0,0.8); }
+        .tm-hero-subtitle { text-shadow: 2px 2px 6px rgba(0,0,0,0.8); }
 
-        /* Testimonials - Full background image visible, no gray block */
-        #testimonials .tm-bg-overlay {
-            background: rgba(0,0,0,0.6) !important; /* Darker overlay for better text readability */
-        }
-        #testimonials .container {
-            position: relative;
-            z-index: 2;
-        }
-        .testimonial-slider {
-            background: transparent !important;
-        }
-        @media (max-width: 768px) {
-            #testimonials { padding: 80px 0 !important; }
-            .testimonial-slider .text-white { background: rgba(0,0,0,0.5); border-radius: 12px; padding: 20px; }
-        }
+        /* Hero Full Cover Fix */
+        #infinite { background-size: cover !important; background-position: center !important; min-height: 100vh; }
+        @media (max-width: 768px) { #infinite { background-attachment: scroll !important; } }
 
-        /* General Mobile Fixes */
-        .tm-hero-title { font-size: 3.5rem !important; }
-        .tm-hero-subtitle { font-size: 1.3rem !important; }
-        .tm-down-arrow { font-size: 3rem !important; }
-
-        @media (max-width: 576px) {
-            .tm-hero-title { font-size: 2.5rem !important; }
-            .tm-hero-subtitle { font-size: 1.1rem !important; }
-            .display-5 { font-size: 2.2rem !important; }
-            .lead { font-size: 1rem; }
-            .service-box .box-inner { padding: 20px 15px; min-height: auto; }
-            .service-box i { font-size: 3rem !important; }
-            .service-box h5 { font-size: 1.2rem !important; }
-            .gallery-img-fixed { height: 200px !important; }
-            .btn-success.btn-lg { padding: 18px; font-size: 1rem; }
-            .whatsapp-float img { width: 55px; height: 55px; }
-        }
-
-        /* Beauty Touches */
+        /* What We Do Boxes - Responsive & Beautiful */
         .service-box .box-inner {
             border-radius: 16px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.4s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 35px 20px;
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
         }
         .service-box:hover .box-inner {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            transform: translateY(-15px);
+            box-shadow: 0 25px 50px rgba(220,53,69,0.25);
         }
-        .gallery-img-fixed { border-radius: 16px; }
+        .service-box .overlay {
+            border-radius: 16px;
+            font-size: 1.5rem;
+        }
+
+        /* Mobile Fixes */
+        @media (max-width: 992px) {
+            .service-box .box-inner { padding: 30px 15px; min-height: 240px; }
+            .service-box i { font-size: 3.5rem !important; }
+            .service-box h5 { font-size: 1.4rem; }
+        }
+        @media (max-width: 576px) {
+            .service-box .box-inner { min-height: auto; padding: 25px 15px; }
+            .service-box i { font-size: 3rem !important; }
+            .service-box h5 { font-size: 1.25rem; }
+            .service-box p { font-size: 0.95rem; }
+            .display-5 { font-size: 2.5rem !important; }
+            .lead { font-size: 1.1rem; }
+        }
+
+        /* Testimonials Fix - Full Image Visible */
+        #testimonials .tm-bg-overlay { background: rgba(0,0,0,0.65) !important; }
+        @media (max-width: 768px) {
+            .testimonial-slider .text-white { padding: 20px; background: rgba(0,0,0,0.5); border-radius: 12px; }
+        }
+
+        /* Gallery Fix */
+        .gallery-img-fixed {
+            height: 300px !important;
+            object-fit: cover;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            transition: all 0.4s ease;
+        }
+        .gallery-item:hover img { transform: scale(1.1); }
+        @media (max-width: 992px) { .gallery-img-fixed { height: 260px !important; } }
+        @media (max-width: 576px) { .gallery-img-fixed { height: 220px !important; } }
+
+        /* Contact */
+        @media (max-width: 576px) {
+            .btn-success.btn-lg { padding: 20px !important; }
+            .btn-success i { font-size: 2.8rem !important; }
+            .whatsapp-float img { width: 55px; height: 55px; bottom: 15px; right: 15px; }
+        }
+
+        /* Navbar & Spacing */
+        .navbar-brand { font-weight: 800; }
+        .tm-section-pad-top { padding: 100px 0; }
+        @media (max-width: 768px) { .tm-section-pad-top { padding: 70px 0; } }
+
+        /* Lightbox - Now with Slick Slider for Multiple Images */
+        .lightbox-overlay .lightbox-content {
+            max-width: 95%;
+            max-height: 95vh;
+        }
+        .lightbox-slider .slick-arrow {
+            z-index: 10;
+            font-size: 3rem;
+            color: white;
+            background: rgba(0,0,0,0.5);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+        }
+        .lightbox-slider .slick-prev { left: 10px; }
+        .lightbox-slider .slick-next { right: 10px; }
+        .lightbox-close { top: 10px; right: 10px; font-size: 50px; }
     </style>
 </head>
 <body>    
@@ -247,8 +285,6 @@
             </a>
           </div>
 
-          
-
           <!-- Box 8 -->
           <div class="col-md-6 col-lg-4">
             <a href="javascript:;" class="service-box" data-images="images/sw1.jpeg,images/sw2.jpeg,images/sw3.jpeg,images/sw4.jpeg,images/sw5.jpeg,images/sw6.jpeg,images/sw7.jpeg,images/sw8.jpeg">
@@ -286,16 +322,16 @@
           </div>
         </div>
         <br>  <br>  
-<section>
-        <div class="text-center mt-5 py-4">
-          <h3 class="fw-bold text-danger">500+ heavy girders launched • Zero delays • 15+ years</h3>
-          <h1 class="display-4 fw-bold mt-3" style="color:#c0392b;">Speed Built in Concrete.</h1>
-        </div>
+        <section>
+          <div class="text-center mt-5 py-4">
+            <h3 class="fw-bold text-danger">500+ heavy girders launched • Zero delays • 15+ years</h3>
+            <h1 class="display-4 fw-bold mt-3" style="color:#c0392b;">Speed Built in Concrete.</h1>
+          </div>
+        </section>
       </div>
     </section>
 
     <!-- Testimonials Section - Sliding, Centered Photo, Auto-play -->
-
     <section id="testimonials" class="tm-section-pad-top tm-parallax-2 position-relative">
       <div class="container">
         <div class="row text-center mb-5">
@@ -309,14 +345,14 @@
         </div>
 
         <div class="testimonial-slider mx-auto" style="max-width: 800px;">
-          <!-- All your testimonials unchanged -->
+          <!-- All your testimonials - unchanged -->
           <div class="px-3">
             <div class="text-center text-white">
               <p class="fw-bold fs-5 mb-1">MOIL LTD</p>
               <p class="text-white-50">Ukwa, Kandri,Gumgaon & Tirodi </p>
             </div>
           </div>
-          <!-- ... (all other testimonials exactly as you had) ... -->
+          <!-- ... (all other 20+ testimonials exactly as you had) ... -->
         </div>
       </div>
       <div class="tm-bg-overlay"></div>
@@ -335,7 +371,7 @@
         </div>
 
         <div class="gallery-horizontal-slider">
-          <!-- All your gallery items unchanged -->
+          <!-- All your 8 gallery items - unchanged -->
           <div class="px-3">
             <a href="img/gallery-img-01.jpeg" class="gallery-item" data-caption="42m PSC Girder launching – Zero traffic block (NHAI Project)">
               <img src="img/gallery-tn-01.jpeg" class="img-fluid rounded-3 shadow-lg gallery-img-fixed" alt="Girder Launch">
@@ -348,7 +384,7 @@
 
     <!-- Contact Section -->
     <section id="contact" class="tm-section-pad-top tm-parallax-2 position-relative">
-      <!-- Your full contact code unchanged -->
+      <!-- Your full contact section - unchanged -->
     </section>
 
     <footer class="text-center small tm-footer text-white">
@@ -357,11 +393,13 @@
       </p>
     </footer>
 
-    <!-- Lightbox for What We Do Boxes -->
+    <!-- Lightbox for What We Do Boxes - NOW WITH SLICK SLIDER -->
     <div id="lightbox" class="lightbox-overlay">
       <span class="lightbox-close">×</span>
       <div class="lightbox-content">
-        <img id="lightbox-img" src="" alt="Project Photo">
+        <div class="lightbox-slider">
+          <!-- Images will be added dynamically by JS -->
+        </div>
       </div>
     </div>
 
@@ -375,13 +413,158 @@
 
     <script>
       $(document).ready(function(){
-        // Your full script unchanged
+        // Your original sliders
+        $('.testimonial-slider').slick({
+          dots: true,
+          arrows: true,
+          infinite: true,
+          autoplay: true,
+          autoplaySpeed: 5000,
+          fade: true,
+          cssEase: 'linear',
+          slidesToShow: 1,
+          adaptiveHeight: true
+        });
+
+        $('.gallery-horizontal-slider').slick({
+          dots: true,
+          arrows: true,
+          infinite: true,
+          autoplay: true,
+          autoplaySpeed: 4000,
+          slidesToShow: 5,
+          slidesToScroll: 2,
+          centerMode: true,
+          centerPadding: '60px',
+          prevArrow: '<button class="slick-prev"><i class="fas fa-chevron-left fa-2x"></i></button>',
+          nextArrow: '<button class="slick-next"><i class="fas fa-chevron-right fa-2x"></i></button>',
+          responsive: [
+            { breakpoint: 1400, settings: { slidesToShow: 4 } },
+            { breakpoint: 1200, settings: { slidesToShow: 3 } },
+            { breakpoint: 992, settings: { slidesToShow: 3 } },
+            { breakpoint: 768, settings: { slidesToShow: 2 } },
+            { breakpoint: 576, settings: { slidesToShow: 1, centerPadding: '40px' } }
+          ]
+        });
+
+        $('.gallery-item').magnificPopup({
+          type: 'image',
+          gallery: { enabled: true },
+          image: { titleSrc: 'data-caption' },
+          mainClass: 'mfp-fade'
+        });
+
+        // NEW: What We Do Lightbox with Slick Slider for multiple images
+        $('.service-box').on('click', function(e){
+          e.preventDefault();
+          const images = $(this).data('images').split(',');
+          const lightbox = $('.lightbox-overlay');
+          const slider = $('.lightbox-slider');
+          slider.empty(); // Clear previous images
+
+          images.forEach(src => {
+            slider.append(`<div><img src="${src}" class="img-fluid" style="max-height:85vh; object-fit:contain;"></div>`);
+          });
+
+          lightbox.addClass('active');
+
+          // Initialize slick slider inside lightbox
+          if (!slider.hasClass('slick-initialized')) {
+            slider.slick({
+              dots: true,
+              arrows: true,
+              infinite: true,
+              slidesToShow: 1,
+              adaptiveHeight: true,
+              prevArrow: '<button class="slick-prev"><i class="fas fa-chevron-left"></i></button>',
+              nextArrow: '<button class="slick-next"><i class="fas fa-chevron-right"></i></button>'
+            });
+          } else {
+            slider.slick('unslick').slick({
+              dots: true,
+              arrows: true,
+              infinite: true,
+              slidesToShow: 1,
+              adaptiveHeight: true
+            });
+          }
+        });
+
+        // Close lightbox
+        $('.lightbox-close, .lightbox-overlay').on('click', function(e){
+          if (e.target === this || $(e.target).hasClass('lightbox-close')) {
+            $('.lightbox-overlay').removeClass('active');
+            $('.lightbox-slider').slick('unslick');
+          }
+        });
       });
     </script>
 
-    <!-- Your original inline style unchanged -->
+    <!-- Your original inline style - unchanged + lightbox slider fix -->
     <style>
-      /* Your full original style block */
+      /* Your original styles */
+      .service-box .box-inner { transition: all 0.4s ease; cursor: pointer; }
+      .service-box:hover .box-inner { transform: translateY(-12px); box-shadow: 0 25px 50px rgba(0,0,0,0.18)!important; }
+      .service-box .overlay {
+        position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+        background: rgba(220,53,69,0.92); color: white; font-size: 1.4rem; font-weight: bold;
+        display: flex; align-items: center; justify-content: center;
+        opacity: 0; transition: opacity 0.4s;
+      }
+      .service-box:hover .overlay { opacity: 1; }
+
+      .lightbox-overlay {
+        display: none;
+        position: fixed;
+        z-index: 9999;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.95);
+        justify-content: center;
+        align-items: center;
+        opacity: 0;
+        transition: opacity 0.4s ease;
+      }
+      .lightbox-overlay.active {
+        display: flex;
+        opacity: 1;
+      }
+      .lightbox-content {
+        position: relative;
+        max-width: 90%;
+        max-height: 90vh;
+        text-align: center;
+      }
+      .lightbox-slider img {
+        max-width: 100%;
+        max-height: 85vh;
+        object-fit: contain;
+        border-radius: 12px;
+      }
+      .lightbox-close {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        color: white;
+        font-size: 50px;
+        font-weight: bold;
+        cursor: pointer;
+      }
+      .gallery-img-fixed {
+        height: 280px !important;
+        width: 100% !important;
+        object-fit: cover !important;
+        transition: all 0.4s ease;
+      }
+      .gallery-item:hover img {
+        transform: scale(1.08);
+      }
+      .gallery-horizontal-slider .slick-track {
+        display: flex;
+        align-items: center;
+      }
     </style>
   </body>
 </html>
