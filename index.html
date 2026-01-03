@@ -42,30 +42,28 @@
     <link rel="stylesheet" href="css/bootstrap.min.css"/>
     <link rel="stylesheet" href="css/tooplate-infinite-loop.css"/>
 
-    <!-- ALL FIXES: RESPONSIVE, CENTERED BOXES, FULL BACKGROUND, SLIDER LIGHTBOX, NO OVERLAP -->
+    <!-- ALL FIXES: RESPONSIVE, CENTERED, FULL BACKGROUND, SLIDER LIGHTBOX -->
     <style>
-        /* General & Beauty */
-        body { font-family: 'Segoe UI', sans-serif; line-height: 1.7; overflow-x: hidden; }
-
-        /* Hero Full Screen - No Black Bars */
-        #infinite {
-            background: url('img/hero-bg.jpg') center center/cover no-repeat fixed;
-            min-height: 100vh;
+        /* Hero & Parallax Sections - Full Background Image */
+        #infinite, #testimonials, #contact {
+            background-attachment: fixed;
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-size: cover;
         }
         @media (max-width: 768px) {
-            #infinite { background-attachment: scroll; }
+            #infinite, #testimonials, #contact {
+                background-attachment: scroll;
+            }
         }
 
         /* Hero Text */
-        .tm-hero-title { font-size: 4.5rem; font-weight: 900; text-shadow: 3px 3px 10px rgba(0,0,0,0.8); }
-        .tm-hero-subtitle { font-size: 1.6rem; text-shadow: 2px 2px 6px rgba(0,0,0,0.8); }
-        @media (max-width: 768px) {
-            .tm-hero-title { font-size: 3rem; }
-            .tm-hero-subtitle { font-size: 1.3rem; }
-        }
+        .tm-hero-title { font-weight: 900; text-shadow: 3px 3px 10px rgba(0,0,0,0.8); }
+        .tm-hero-subtitle { text-shadow: 2px 2px 6px rgba(0,0,0,0.8); }
 
-        /* What We Do - Perfectly Centered on Desktop & Mobile */
+        /* What We Do - Perfectly Centered */
         #whatwedo .row.g-4 { justify-content: center; }
+
         .service-box .box-inner {
             border-radius: 16px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
@@ -78,25 +76,16 @@
             transform: translateY(-15px);
             box-shadow: 0 25px 50px rgba(220,53,69,0.25);
         }
-        .service-box .overlay {
-            border-radius: 16px;
-            font-size: 1.5rem;
-        }
+        .service-box .overlay { border-radius: 16px; }
+
         @media (max-width: 576px) {
             .service-box .box-inner { padding: 25px 15px; }
             .service-box i { font-size: 3rem !important; }
             .service-box h5 { font-size: 1.25rem; }
         }
 
-        /* Testimonials - Full Background Visible */
-        #testimonials {
-            background: url('img/testimonials-bg.jpg') center center/cover no-repeat fixed;
-        }
+        /* Testimonials Overlay */
         #testimonials .tm-bg-overlay { background: rgba(0,0,0,0.65); }
-        @media (max-width: 768px) {
-            #testimonials { background-attachment: scroll; }
-            .testimonial-slider .text-white { padding: 20px; background: rgba(0,0,0,0.5); border-radius: 12px; }
-        }
 
         /* Gallery */
         .gallery-img-fixed {
@@ -105,25 +94,17 @@
             border-radius: 16px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.15);
         }
-        @media (max-width: 992px) { .gallery-img-fixed { height: 260px; } }
         @media (max-width: 576px) { .gallery-img-fixed { height: 220px; } }
 
-        /* Contact */
-        #contact {
-            background: url('img/contact-bg.jpg') center center/cover no-repeat fixed;
-        }
-        @media (max-width: 768px) { #contact { background-attachment: scroll; } }
-
-        /* Footer - No Overlap with Arrow */
+        /* Footer - No Overlap */
         footer.tm-footer {
             position: relative;
             z-index: 10;
             background: rgba(0,0,0,0.8);
             padding: 20px 0;
-            margin-top: -1px;
         }
 
-        /* Lightbox with Full Slider (Arrows + Swipe) */
+        /* Lightbox Slider */
         .lightbox-slider img {
             max-height: 85vh;
             object-fit: contain;
@@ -133,50 +114,57 @@
             font-size: 3rem;
             color: white;
             z-index: 10;
-            background: rgba(0,0,0,0.5);
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
         }
-        .lightbox-slider .slick-prev { left: 20px; }
-        .lightbox-slider .slick-next { right: 20px; }
-        .lightbox-close { top: 20px; right: 20px; font-size: 50px; }
     </style>
 </head>
 <body>
     <!-- Hero section -->
     <section id="infinite" class="text-white tm-font-big tm-parallax">
+      <!-- Navigation -->
       <nav class="navbar navbar-expand-md tm-navbar fixed-top" id="tmNav">
         <div class="container">
-          <a href="#infinite" class="navbar-brand">Innovative Constructions</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
+          <div class="tm-next">
+              <a href="#infinite" class="navbar-brand">Innovative Constructions</a>
+          </div>
+          
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <i class="fas fa-bars navbar-toggler-icon"></i>
           </button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav ms-auto">
-              <li class="nav-item"><a class="nav-link tm-nav-link" href="#infinite">Home</a></li>
-              <li class="nav-item"><a class="nav-link tm-nav-link" href="#whatwedo">What We Do</a></li>
-              <li class="nav-item"><a class="nav-link tm-nav-link" href="#testimonials">Testimonials</a></li>
-              <li class="nav-item"><a class="nav-link tm-nav-link" href="#gallery">Gallery</a></li>
-              <li class="nav-item"><a class="nav-link tm-nav-link" href="#contact">Contact</a></li>
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item">
+                  <a class="nav-link tm-nav-link" href="#infinite">Home</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link tm-nav-link" href="#whatwedo">What We Do</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link tm-nav-link" href="#testimonials">Testimonials</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link tm-nav-link" href="#gallery">Gallery</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link tm-nav-link" href="#contact">Contact</a>
+              </li>
             </ul>
           </div>
         </div>
       </nav>
-
+      
       <div class="text-center tm-hero-text-container">
         <div class="tm-hero-text-container-inner">
             <h2 class="tm-hero-title">Innovative Constructions</h2>
             <p class="tm-hero-subtitle">
-              Speed Built in Concrete<br>
-              500+ girders launched. Zero delays. || Your trusted partner in construction.
+              Speed Built in Concrete
+              <br>500+ girders launched. Zero delays. || Your trusted partner in construction.
             </p>
         </div>
       </div>
 
       <div class="tm-next tm-intro-next">
         <a href="#whatwedo" class="text-center tm-down-arrow-link">
-          <i class="fas fa-3x fa-arrow-down tm-down-arrow"></i>
+          <i class="fas fa-2x fa-arrow-down tm-down-arrow"></i>
         </a>
       </div>
     </section>
@@ -192,7 +180,7 @@
         </div>
 
         <div class="row g-4 justify-content-center">
-          <!-- All 10 boxes - exactly as you provided -->
+          <!-- Box 1 -->
           <div class="col-md-6 col-lg-4">
             <a href="javascript:;" class="service-box" data-images="images/silos1.jpeg,images/silos2.jpeg,images/silos1.jpeg,images/silos2.jpeg">
               <div class="box-inner text-center p-4 rounded shadow-sm h-100 bg-light position-relative overflow-hidden">
@@ -204,6 +192,7 @@
             </a>
           </div>
 
+          <!-- Box 2 -->
           <div class="col-md-6 col-lg-4">
             <a href="javascript:;" class="service-box" data-images="images/Girder.jpeg,images/Girder2.jpeg,images/Girder3.jpeg,images/Girder4.jpeg,images/Girder5.jpeg,images/Girder6.jpeg">
               <div class="box-inner text-center p-4 rounded shadow-sm h-100 bg-light position-relative overflow-hidden">
@@ -215,6 +204,7 @@
             </a>
           </div>
 
+          <!-- Box 3 -->
           <div class="col-md-6 col-lg-4">
             <a href="javascript:;" class="service-box" data-images="images/circle.jpeg,images/circle1.jpeg,images/circle.jpeg">
               <div class="box-inner text-center p-4 rounded shadow-sm h-100 bg-light position-relative overflow-hidden">
@@ -226,6 +216,7 @@
             </a>
           </div>
 
+          <!-- Box 4 -->
           <div class="col-md-6 col-lg-4">
             <a href="javascript:;" class="service-box" data-images="images/uw1.jpeg,images/uw2.jpeg,images/uw3.jpeg,images/uw4.jpeg,images/uw5.jpeg">
               <div class="box-inner text-center p-4 rounded shadow-sm h-100 bg-light position-relative overflow-hidden">
@@ -237,6 +228,7 @@
             </a>
           </div>
 
+          <!-- Box 5 -->
           <div class="col-md-6 col-lg-4">
             <a href="javascript:;" class="service-box" data-images="images/manufacturing1.jpg,images/manufacturing2.jpg,images/manufacturing3.jpg">
               <div class="box-inner text-center p-4 rounded shadow-sm h-100 bg-light position-relative overflow-hidden">
@@ -248,6 +240,7 @@
             </a>
           </div>
 
+          <!-- Box 6 -->
           <div class="col-md-6 col-lg-4">
             <a href="javascript:;" class="service-box" data-images="images/solar1.jpg,images/solar2.jpg,images/solar3.jpg">
               <div class="box-inner text-center p-4 rounded shadow-sm h-100 bg-light position-relative overflow-hidden">
@@ -259,6 +252,7 @@
             </a>
           </div>
 
+          <!-- Box 7 -->
           <div class="col-md-6 col-lg-4">
             <a href="javascript:;" class="service-box" data-images="images/defence1.jpg,images/defence2.jpg,images/defence3.jpg">
               <div class="box-inner text-center p-4 rounded shadow-sm h-100 bg-light position-relative overflow-hidden">
@@ -270,6 +264,7 @@
             </a>
           </div>
 
+          <!-- Box 8 -->
           <div class="col-md-6 col-lg-4">
             <a href="javascript:;" class="service-box" data-images="images/sw1.jpeg,images/sw2.jpeg,images/sw3.jpeg,images/sw4.jpeg,images/sw5.jpeg,images/sw6.jpeg,images/sw7.jpeg,images/sw8.jpeg">
               <div class="box-inner text-center p-4 rounded shadow-sm h-100 bg-light position-relative overflow-hidden">
@@ -281,6 +276,7 @@
             </a>
           </div>
 
+          <!-- Box 9 -->
           <div class="col-md-6 col-lg-4">
             <a href="javascript:;" class="service-box" data-images="images/Girder0111.jpeg,images/Girder0111.jpeg,images/Girder0111.jpeg,images/Girder0111.jpeg,images/Girder0111.jpeg,images/Girder0111.jpeg">
               <div class="box-inner text-center p-4 rounded shadow-sm h-100 bg-light position-relative overflow-hidden">
@@ -292,6 +288,7 @@
             </a>
           </div>
 
+          <!-- Box 10 -->
           <div class="col-md-6 col-lg-4">
             <a href="javascript:;" class="service-box" data-images="images/turnkey1.jpg,images/turnkey2.jpg,images/turnkey3.jpg">
               <div class="box-inner text-center p-4 rounded shadow-sm h-100 bg-light position-relative overflow-hidden">
@@ -303,7 +300,7 @@
             </a>
           </div>
         </div>
-
+        <br>  <br>  
         <div class="text-center mt-5 py-4">
           <h3 class="fw-bold text-danger">500+ heavy girders launched • Zero delays • 15+ years</h3>
           <h1 class="display-4 fw-bold mt-3" style="color:#c0392b;">Speed Built in Concrete.</h1>
@@ -636,13 +633,13 @@
           mainClass: 'mfp-fade'
         });
 
-        // What We Do - Full Slider Lightbox
+        // What We Do Lightbox - Full Slider
         $('.service-box').on('click', function(e){
           e.preventDefault();
           const images = $(this).data('images').split(',');
           const slider = $('.lightbox-slider');
           slider.empty();
-          images.forEach(src => slider.append(`<div><img src="${src}" class="img-fluid" style="max-height:85vh;object-fit:contain;"></div>`));
+          images.forEach(src => slider.append(`<div><img src="${src}" class="img-fluid" style="max-height:85vh;object-fit:contain;border-radius:12px;"></div>`));
           $('.lightbox-overlay').addClass('active');
           if (!slider.hasClass('slick-initialized')) {
             slider.slick({
@@ -650,9 +647,7 @@
               arrows: true,
               infinite: true,
               slidesToShow: 1,
-              adaptiveHeight: true,
-              prevArrow: '<button class="slick-prev"><i class="fas fa-chevron-left"></i></button>',
-              nextArrow: '<button class="slick-next"><i class="fas fa-chevron-right"></i></button>'
+              adaptiveHeight: true
             });
           } else {
             slider.slick('unslick').slick({dots:true,arrows:true,infinite:true,slidesToShow:1,adaptiveHeight:true});
